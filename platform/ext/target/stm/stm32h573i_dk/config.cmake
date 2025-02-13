@@ -14,7 +14,6 @@ set(MCUBOOT_ALIGN_VAL                   16          CACHE STRING    "Align optio
 set(MCUBOOT_UPGRADE_STRATEGY            "OVERWRITE_ONLY"      CACHE STRING    "Upgrade strategy for images")
 set(TFM_PARTITION_FIRMWARE_UPDATE       OFF          CACHE BOOL      "Enable firmware update partition")
 set(TFM_PARTITION_PLATFORM              ON          CACHE BOOL      "Enable platform partition")
-set(MCUBOOT_DATA_SHARING                ON          CACHE BOOL      "Enable Data Sharing")
 set(MCUBOOT_BOOTSTRAP                   ON          CACHE BOOL      "Allow initial state with images in secondary slots(empty primary slots)")
 set(MCUBOOT_ENC_IMAGES                  ON          CACHE BOOL      "Enable encrypted image upgrade support")
 set(MCUBOOT_ENCRYPT_RSA                 ON          CACHE BOOL      "Use RSA for encrypted image upgrade support")
