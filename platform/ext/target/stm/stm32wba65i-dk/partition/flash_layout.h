@@ -21,15 +21,40 @@
  *
  * Not supported
  *
- * Flash layout for stm32wba65i-dk without BL2 :
+ * Flash layout for stm32wba65i-dk without BL2, without OEMxROT :
  *
- *  0x000_0000 OTP / NV counters area (8 KB)
+ *  0x000_0000 OTP / NV counters area (16 KB)
  *  0x000_4000 Protected Storage Area (16 KB)
  *  0x000_8000 Internal Trusted Storage Area (16 KB)
- *  0x000_c400 Secure     image  (384 KB)
- *  0x006_c400 Non-secure image primary (512 KB)
+ *  0x000_c000 Secure     image  (384 KB)
+ *  0x006_c000 Non-secure image primary (512 KB)
+ *
+ * Flash layout for stm32wba65i-dk with OEMiROT without OEMuROT:
+ * (considering here default location for OEMiROT)
+ *
+ *  0x000_0000 OEMiROT HASH_REF (8 KB)
+ *  0x000_2000 OEMiROT NVCNT (8 KB)
+ *  0x000_4000 OEMiROT PERSO (8 KB)
+ *             OEMiROT Scratch (0kB)            (swap: 64kB)
+ *  0x000_6000 OEMiROT (64 KB)                  (swap: 72kB)
+ *  0x001_6000 OEMiROT NOHDP (8 KB)
+ *  0x001_8000 OTP / NV counters area (16 KB)
+ *  0x001_c000 Protected Storage Area (16 KB)
+ *  0x002_0000 Internal Trusted Storage Area (16 KB)
+ *  0x002_4000 Secure image primary (384 KB)
+ *  0x008_4000 Non-secure image primary (512 KB)
+ *
+ * Flash layout for stm32wba65i-dk with OEMiROT and OEMuROT :
+ * (considering here default location for OEMiROT and OEMuROT)
+ *
+ *  0x000_0000 OEMiROT (96 KB)                 (swap: 168kB)
+ *  0x001_0000 OEMuROT (64 KB)                 (swap: 168kB)
+ *  0x002_0000 OTP / NV counters area (8 KB)
+ *  0x002_4000 Protected Storage Area (16 KB)
+ *  0x002_8000 Internal Trusted Storage Area (16 KB)
+ *  0x002_c000 Secure     image  (384 KB)
+ *  0x008_c000 Non-secure image primary (512 KB)
  */
-
 
 /* This header file is included from linker scatter file as well, where only a
  * limited C constructs are allowed. Therefore it is not possible to include
@@ -115,8 +140,20 @@
 /* Flash layout info for BL2 bootloader */
 #define FLASH_BASE_ADDRESS              (0x0c000000) /* same as FLASH0_BASE */
 
+/*
+ * FLASH_BOOTLOADER_END_OFFSET defines the end offset in flash memory of the
+ * area reserved to the bootloader. It it currently set to 96kB for OEMiROT
+ * code, data and private persistent storage.
+ *
+ * OEMiROT in overwrite mode:           96kB
+ * OEMiROT in swap mode:               168kB
+ * OEMiROT/OEMuROT in overwrite mode:  192kB
+ * OEMiROT/OEMuROT in swap mode:       336kB
+ */
+#define FLASH_BOOTLOADER_END_OFFSET             (96 * 1024)
+
 /* Non Volatile Counters definitions */
-#define FLASH_NV_COUNTERS_AREA_OFFSET           (0x0000)
+#define FLASH_NV_COUNTERS_AREA_OFFSET           (FLASH_BOOTLOADER_END_OFFSET + 0x0000)
 #define FLASH_NV_COUNTER_AREA_SIZE              (0x0000)
 
 /* Control Non Volatile Counters definitions */
