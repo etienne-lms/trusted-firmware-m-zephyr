@@ -25,6 +25,12 @@ target_compile_definitions(platform_region_defs
         $<$<OR:$<BOOL:${TEST_NS}>,$<BOOL:${TEST_S}>>:FLASH_LAYOUT_FOR_TEST>
 )
 
+if(STM32_FLASH_LAYOUT_BEGIN_OFFSET)
+add_compile_definitions(
+    STM32_FLASH_LAYOUT_BEGIN_OFFSET=${STM32_FLASH_LAYOUT_BEGIN_OFFSET}
+)
+endif()
+
 #========================= Platform common defs ===============================#
 target_add_scatter_file(tfm_s
     $<$<C_COMPILER_ID:ARMClang>:${CMAKE_CURRENT_SOURCE_DIR}/Device/Source/armclang/tfm_common_s.sct>
