@@ -169,7 +169,7 @@
 /* OTP / Non Volatile Counters definitions */
 #define FLASH_OTP_NV_COUNTERS_SECTOR_SIZE   (FLASH_AREA_IMAGE_SECTOR_SIZE)
 #define FLASH_OTP_NV_COUNTERS_AREA_OFFSET   (FLASH_AREA_BL2_NOHDP_OFFSET + \
-                                                 FLASH_AREA_BL2_NOHDP_SIZE)
+                                             FLASH_AREA_BL2_NOHDP_SIZE)
 #define FLASH_OTP_NV_COUNTERS_AREA_SIZE   (FLASH_OTP_NV_COUNTERS_SECTOR_SIZE + \
                                            FLASH_OTP_NV_COUNTERS_SECTOR_SIZE)
 
