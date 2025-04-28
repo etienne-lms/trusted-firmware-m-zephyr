@@ -19,3 +19,9 @@ add_compile_definitions(
     STM32WBA65xx
     USE_HAL_DRIVER
 )
+
+if(STM32_FLASH_LAYOUT_BEGIN_OFFSET)
+add_compile_definitions(
+    STM32_FLASH_LAYOUT_BEGIN_OFFSET=${STM32_FLASH_LAYOUT_BEGIN_OFFSET}
+)
+endif()
