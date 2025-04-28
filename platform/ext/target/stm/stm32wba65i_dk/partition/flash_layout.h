@@ -183,13 +183,6 @@
 #define FLASH_MAX_PARTITION_SIZE FLASH_NS_PARTITION_SIZE
 #endif
 
-
-#define SECURE_IMAGE_OFFSET             (0x0)
-#define SECURE_IMAGE_MAX_SIZE           FLASH_S_PARTITION_SIZE
-
-#define NON_SECURE_IMAGE_OFFSET         (SECURE_IMAGE_OFFSET + SECURE_IMAGE_MAX_SIZE)
-#define NON_SECURE_IMAGE_MAX_SIZE       FLASH_NS_PARTITION_SIZE
-
 /* Flash device name used by BL2 and NV Counter
  * Name is defined in flash driver file: low_level_flash.c
  */
@@ -248,19 +241,6 @@
 #define TFM_OTP_NV_COUNTERS_SECTOR_SIZE  FLASH_OTP_NV_COUNTERS_SECTOR_SIZE
 #define TFM_OTP_NV_COUNTERS_BACKUP_AREA_ADDR (TFM_OTP_NV_COUNTERS_AREA_ADDR + \
                                               TFM_OTP_NV_COUNTERS_AREA_SIZE)
-/* NV Counters definitions */
-#define TFM_NV_COUNTERS_AREA_ADDR        FLASH_NV_COUNTERS_AREA_OFFSET
-#define TFM_NV_COUNTERS_AREA_SIZE        (0x20)/* 32 Bytes */
-#define TFM_NV_COUNTERS_SECTOR_ADDR      FLASH_NV_COUNTERS_AREA_OFFSET
-#define TFM_NV_COUNTERS_SECTOR_SIZE      FLASH_AREA_IMAGE_SECTOR_SIZE
-
-/* BL2 NV Counters definitions  */
-#define BL2_NV_COUNTERS_AREA_ADDR        FLASH_BL2_NVCNT_AREA_OFFSET
-#define BL2_NV_COUNTERS_AREA_SIZE        FLASH_BL2_NVCNT_AREA_SIZE
-
-/* FIXME: not valid today */
-#define BL2_S_RAM_ALIAS_BASE             (0x30000000)
-#define BL2_NS_RAM_ALIAS_BASE            (0x20000000)
 
 /*  This area in SRAM 2 is updated BL2 and can be lock to avoid any changes */
 #define BOOT_TFM_SHARED_DATA_SIZE        (0x400)
