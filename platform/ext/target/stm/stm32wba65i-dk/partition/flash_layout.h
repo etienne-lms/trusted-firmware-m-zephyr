@@ -123,7 +123,7 @@
 
 /* Secure image secondary slot */
 #define FLASH_AREA_2_ID            (FLASH_AREA_1_ID + 1)
-#define FLASH_AREA_2_OFFSET        (FLASH_NV_COUNTERS_AREA_OFFSET + FLASH_B_SIZE)
+#define FLASH_AREA_2_OFFSET        (FLASH_AREA_1_OFFSET + FLASH_AREA_1_SIZE)
 #define FLASH_AREA_2_SIZE          (FLASH_S_PARTITION_SIZE)
 /* Non-secure image secondary slot */
 #define FLASH_AREA_3_ID            (FLASH_AREA_2_ID + 1)
