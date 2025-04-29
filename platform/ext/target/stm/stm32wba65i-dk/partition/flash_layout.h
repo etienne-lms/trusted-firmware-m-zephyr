@@ -155,7 +155,7 @@
 /* The size of S partition */
 #define FLASH_S_PARTITION_SIZE          (0x60000) /* 384 KB for S partition */
 /* The size of NS partition */
-#define FLASH_NS_PARTITION_SIZE         (0x60000) /* 512 KB for NS partition */
+#define FLASH_NS_PARTITION_SIZE         (0x80000) /* 512 KB for NS partition */
 
 /* Non Volatile Counters definitions */
 #define FLASH_NV_COUNTERS_AREA_OFFSET           (0x0000)
